@@ -1,0 +1,35 @@
+syntax="proto3";
+
+package fleap;
+
+option go_package = "fleap_protos/";
+
+message AuthorizationLoginRequest {
+  string email = 1;
+  string password = 2;
+}
+
+message AuthorizationLoginResponse {
+  string token = 1;
+}
+
+message AuthenticationSignupRequest {
+  string username = 1;
+  string email = 2;
+  string password = 3;
+}
+
+message AuthenticationSignupResponse {
+  string message = 1;
+  string token = 2;
+}
+
+message ValidateTokenRequest {
+  string token = 1;
+}
+
+message ValidateTokenResponse {
+  string user_id = 1;
+  string email = 2;
+}
+

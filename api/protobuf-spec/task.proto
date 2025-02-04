@@ -1,0 +1,71 @@
+syntax="proto3";
+
+package fleap;
+
+option go_package = "fleap_protos/";
+
+import "google/protobuf/timestamp.proto";
+
+message Task {
+  string id = 1;
+  string user_id = 2;
+  string title = 3;
+  string body = 4;
+  google.protobuf.Timestamp created_at = 5;
+  google.protobuf.Timestamp updated_at = 6;
+}
+
+message CreateTaskRequest {
+  string title = 1;
+  string body = 2;
+}
+
+message CreateTaskResponse {
+  Task task = 1;
+}
+
+message Tasks {
+  repeated Task tasks = 1;
+}
+
+message ListTasksRequest {
+  string user_id = 1;
+}
+
+message ListTasksResponse {
+  Tasks tasks = 1;
+}
+
+message GetTaskRequest {
+  string user_id = 1;
+  string id = 2;
+}
+
+message GetTaskResponse {
+  string id = 1;
+  string user_id = 2;
+  string title = 3;
+  string body = 4;
+}
+
+message UpdateTaskRequest {
+  string user_id = 1;
+  string id = 2;
+}
+
+message UpdateTaskResponse {
+  string id = 1;
+  string user_id = 2;
+  string title = 3;
+  string body = 4;
+  google.protobuf.Timestamp updated_at = 5;
+}
+
+message DeleteTaskRequest {
+  string user_id = 1;
+  string id = 2;
+}
+
+message DeleteTaskResponse {
+  string message = 1;
+}

@@ -1,0 +1,62 @@
+syntax="proto3";
+
+package fleap;
+
+option go_package = "fleap_protos/";
+
+import "google/api/annotations.proto";
+import "api/protobuf-spec/auth.proto";
+import "api/protobuf-spec/task.proto";
+
+
+service AuthService {
+  rpc SignUp (AuthenticationSignupRequest) returns (AuthenticationSignupResponse) {
+    option (google.api.http) = {
+      post: "/api/v1/auth/signup"
+    };
+  }
+
+  rpc Login(AuthorizationLoginRequest) returns (AuthorizationLoginResponse) {
+    option (google.api.http) = {
+      post: "/api/v1/auth/login"
+    };
+  }
+
+  rpc ValidateToken(ValidateTokenRequest) returns (ValidateTokenResponse) {
+    option (google.api.http) = {
+      post: "/api/v1/auth/validate"
+    };
+  }
+}
+
+service TaskService {
+  rpc CreateTask(CreateTaskRequest) returns (Task) {
+    option (google.api.http) = {
+      post: "/api/v1/task"
+    };
+  }
+  
+  rpc ListTasks(ListTasksRequest) returns (Tasks) {
+    option (google.api.http) = {
+      get: "/api/v1/task"
+    };
+  }
+  
+  rpc GetTask(GetTaskRequest) returns (GetTaskResponse) {
+    option (google.api.http) = {
+      get: "/api/v1/task/{id}"
+    };
+  }
+  
+  rpc UpdateTask(UpdateTaskRequest) returns (UpdateTaskResponse) {
+    option (google.api.http) = {
+      put: "/api/v1/task/{id}"
+    };
+  }
+
+  rpc DeleteTask(DeleteTaskRequest) returns (DeleteTaskResponse) {
+    option (google.api.http) = {
+      delete: "/api/v1/task/{id}"
+    };
+  }
+}
