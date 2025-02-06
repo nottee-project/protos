@@ -30,13 +30,13 @@ service AuthService {
 }
 
 service TaskService {
-  rpc CreateTask(CreateTaskRequest) returns (Task) {
+  rpc CreateTask(CreateTaskRequest) returns (CreateTaskResponse) {
     option (google.api.http) = {
       post: "/api/v1/task"
     };
   }
   
-  rpc ListTasks(ListTasksRequest) returns (Tasks) {
+  rpc ListTasks(ListTasksRequest) returns (ListTasksResponse) {
     option (google.api.http) = {
       get: "/api/v1/task"
     };
